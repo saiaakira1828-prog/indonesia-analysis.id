@@ -22,8 +22,8 @@ Situs web `analisis.indonesia` adalah portal analisis ekonomi Indonesia yang men
 
 ## Kustomisasi
 - Edit data dan teks pada `index.html` untuk memperbarui indikator ekonomi.
-- Sesuaikan gaya visual di `htl.css` untuk tampilan tema atau layout baru.
-- Tambahkan logika interaktif di `htl.js` untuk fitur grafik dan animasi tambahan.
+- Sesuaikan gaya visual di `style.css` untuk tampilan tema atau layout baru.
+- Tambahkan logika interaktif di `script.js` untuk fitur grafik dan animasi tambahan.
 
 ## Kontak
 Pengembang: Syaifi Alli
