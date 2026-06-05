@@ -4,8 +4,8 @@ Situs web `analisis.indonesia` adalah portal analisis ekonomi Indonesia yang men
 
 ## Isi Folder
 - `index.html` - Halaman utama situs web.
-- `htl.css` - Gaya tampilan dan tema situs.
-- `htl.js` - Skrip JavaScript untuk animasi, grafik, dan interaksi pengguna.
+- `style.css` - Gaya tampilan dan tema situs.
+- `script.js` - Skrip JavaScript untuk animasi, grafik, dan interaksi pengguna.
 
 ## Fitur Utama
 - Navigasi halaman dengan tautan internal ke bagian statistik, analisis, dan data.
