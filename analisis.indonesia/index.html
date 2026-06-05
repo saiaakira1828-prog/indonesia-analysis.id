@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analisis Ekonomi Indonesia</title>
+  <link rel="stylesheet" href="htl.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://s3.tradingview.com/tv.js"></script>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <a href="#home" class="nav-link">📊 Beranda</a>
+      <a href="#makro" class="nav-link">💼 Ekonomi Makro</a>
+      <a href="#mikro" class="nav-link">🏪 Ekonomi Mikro</a>  
+      <a href="#analisis" class="nav-link">📈 Analisis Grafik</a>
+      <a href="#data" class="nav-link">📋 Data Lengkap</a>
+    </nav>
+    <div id="wib-clock">WIB 00:00:00</div>
+    <div id="header-action-stack">
+      <button id="cast-button" class="button button-secondary" aria-expanded="false">📺 Cast</button>
+      <button id="donate-button" class="button button-donate" onclick="window.open('https://www.indonesia-analysis.id/donate', '_blank')">❤️ Donasi</button>
+      <button id="about-button" class="button button-tertiary" onclick="document.getElementById('tentang').scrollIntoView({behavior: 'smooth'})">ℹ️ Tentang Saya</button>
+
+      <div id="cast-panel" aria-hidden="true">
+        <div class="cast-panel-inner">
+          <div class="cast-panel-header">Perangkat Tersedia<span id="cast-close">✕</span></div>
+          <ul id="device-list">
+            </ul>
+          <div class="cast-manual">
+            <div class="cast-manual-title">Manual: buka URL ini di perangkat tujuan</div>
+            <div class="cast-link" id="cast-target-link"></div>
+            <button id="cast-copy" class="button button-secondary small">Salin Link</button>
+          </div>
+          <div class="cast-footer">Atau <button id="cast-open-new" class="link-like">Buka halaman presentasi</button> di perangkat saat ini.</div>
+        </div>
+      </div>
+    </div>
+
+    <section class="hero" id="home">
+      <h1>📊 Selamat Datang Di Website Analisis Ekonomi Indonesia</h1>
+      <p>Portal analisis komprehensif untuk memahami perekonomian Indonesia melalui data makro dan mikro ekonomi terkini dengan visualisasi grafik candlestick yang interaktif.
+        <i>Pengembangan oleh Syaifi Alli | Data diperbarui: Mei 2026 | Sumber Data: Bank Indonesia, BPS, Kementerian Perdagangan, Kementerian BUMN, OJK. Website ini diperbarui secara berkala untuk memberikan informasi yang akurat dan relevan bagi pengguna. Terima kasih sudah mengunjungi website ini!</i>
+      </p>
+      <div class="hero-actions">
+        <button class="button button-primary" onclick="document.getElementById('makro').scrollIntoView({behavior: 'smooth'})">🔍 Lihat Analisis Makro</button>
+        <button class="button button-secondary" onclick="document.getElementById('analisis').scrollIntoView({behavior: 'smooth'})">📈 Lihat Grafik</button>
+        <button id="theme-toggle" class="button button-tertiary">🌙 Mode Gelap</button>
+      </div>
+      <div class="theme-actions">
+        <span>Pilih Tema:</span>
+        <button class="theme-color theme-sky" data-theme="theme-sky" title="Biru"></button>
+        <button class="theme-color theme-emerald" data-theme="theme-emerald" title="Hijau"></button>
+        <button class="theme-color theme-rose" data-theme="theme-rose" title="Merah"></button>
+        <button class="theme-color theme-white" data-theme="theme-white" title="Putih"></button>
+      </div>
+    </section>
+  </header>
+
+  <main>
+    <section id="makro" class="reveal">
+      <h2 class="section-title">💼 Indikator Ekonomi Makro Indonesia</h2>
+      <div class="cards-grid">
+        <article class="macro-card">
+          <div class="card-header">🏛️ PDB (Produk Domestik Bruto)</div>
+          <p class="stat-value">Rp 21.850 Triliun (2026)</p>
+          <p>Pertumbuhan Tahunan: <span class="positive">5,05%</span></p>
+          <p class="card-desc">Nilai total produk dan layanan yang dihasilkan Indonesia dalam satu tahun.</p>
+        </article>
+
+        <article class="macro-card">
+          <div class="card-header">💱 Kurs Rupiah</div>
+          <p class="stat-value">Rp 18.017,80 / USD</p>
+          <p>Pergerakan: <span class="positive">+1,1%</span> Bulan Ini</p>
+          <p class="card-desc">Rekor Pelemahan Nilai tukar rupiah terhadap dolar Amerika Serikat untuk analisis pasar terbaru berdasarkan rilis penutupan pasar terbaru.</p>
+        </article>
+
+        <article class="macro-card">
+          <div class="card-header">📉 Tingkat Inflasi</div>
+          <p class="stat-value">2,65%</p>
+          <p>Target BI: 2,0% - 4,0%</p>
+          <p class="card-desc">Laju peningkatan harga barang dan jasa secara keseluruhan yang terkendali stabil.</p>
+        </article>
+
+        <article class="macro-card">
+          <div class="card-header">💳 Suku Bunga BI</div>
+          <p class="stat-value">5,50%</p>
+          <p>Kebijakan: <span class="stable">Stabil</span></p>
+          <p class="card-desc">Suku bunga acuan Bank Indonesia untuk menjaga stabilitas moneter.</p>
+        </article>
+
+        <article class="macro-card">
+          <div class="card-header">👥 Pengangguran</div>
+          <p class="stat-value">4,8%</p>
+          <p>Populasi Kerja: 145,2 Juta</p>
+          <p class="card-desc">Tingkat pengangguran terbuka terhadap total keseluruhan angkatan kerja nasional.</p>
+        </article>
+
+        <article class="macro-card">
+          <div class="card-header">🏗️ Investasi PMA</div>
+          <p class="stat-value">$43.5 Miliar</p>
+          <p>Pertumbuhan: <span class="positive">+12.8%</span></p>
+          <p class="card-desc">Penanaman Modal Asing yang masuk dan terealisasi ke Indonesia.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="mikro" class="reveal">
+      <h2 class="section-title">🏪 Analisis Ekonomi Mikro Indonesia</h2>
+      <div class="cards-grid">
+        <article class="micro-card">
+          <div class="card-header">🏢 UKM Indonesia</div>
+          <p class="stat-value">65.5 Juta Unit</p>
+          <p>Kontribusi: <span class="positive">61.9%</span> PDB</p>
+          <p class="card-desc">Usaha Kecil Menengah merupakan tulang punggung ekonomi lokal.</p>
+        </article>
+
+        <article class="micro-card">
+          <div class="card-header">🛍️ E-Commerce</div>
+          <p class="stat-value">$44.1 Miliar</p>
+          <p>Pertumbuhan: <span class="positive">+18.5%</span> YoY</p>
+          <p class="card-desc">Nilai transaksi perdagangan elektronik di Indonesia terus meningkat.</p>
+        </article>
+
+        <article class="micro-card">
+          <div class="card-header">🚜 Pertanian</div>
+          <p class="stat-value">13.7%</p>
+          <p>Kontribusi: <span class="positive">13.7%</span> PDB</p>
+          <p class="card-desc">Sektor pertanian memberikan lapangan kerja bagi jutaan pekerja.</p>
+        </article>
+
+        <article class="micro-card">
+          <div class="card-header">🏭 Manufaktur</div>
+          <p class="stat-value">19.6%</p>
+          <p>Tenaga Kerja: 15.8 Juta</p>
+          <p class="card-desc">Industri manufaktur mendominasi ekspor dan lapangan kerja formal.</p>
+        </article>
+
+        <article class="micro-card">
+          <div class="card-header">🏠 Real Estat</div>
+          <p class="stat-value">$24.3 Miliar</p>
+          <p>Pertumbuhan: <span class="positive">+8.2%</span></p>
+          <p class="card-desc">Sektor properti dan real estat mengalami perkembangan pesat.</p>
+        </article>
+
+        <article class="micro-card">
+          <div class="card-header">🔋 Energi Terbarukan</div>
+          <p class="stat-value">12.3% Bauran</p>
+          <p>Target 2030: <span class="positive">23%</span></p>
+          <p class="card-desc">Transisi energi menuju sumber energi yang berkelanjutan.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="analisis" class="reveal">
+      <h2 class="section-title">📈 Analisis Grafik Candlestick & Tren Ekonomi</h2>
+      
+      <div class="analysis-container">
+        <div class="chart-section">
+          <div class="chart-header">
+            <h3>📊 Grafik Candlestick - Rupiah vs USD (Live)</h3>
+            <div id="candlestick-range-buttons" class="filter-buttons">
+              <button class="filter-btn" data-period="1m">1 Bulan</button>
+              <button class="filter-btn" data-period="3m">3 Bulan</button>
+              <button class="filter-btn active" data-period="6m">6 Bulan</button>
+              <button class="filter-btn" data-period="1y">1 Tahun</button>
+            </div>
+          </div>
+          <div id="tradingview_candle_chart" class="tradingview-chart-container"></div>
+        </div>
+
+        <div class="chart-section">
+          <div class="chart-header">
+            <h3>📉 Tren Pertumbuhan PDB</h3>
+            <div id="pdb-range-buttons" class="filter-buttons">
+              <button class="filter-btn active" data-period="quarter">Kuartalan</button>
+              <button class="filter-btn" data-period="annual">Tahunan</button>
+            </div>
+          </div>
+          <canvas id="pdbChart"></canvas>
+        </div>
+
+        <div class="chart-section">
+          <div class="chart-header">
+            <h3>💹 Inflasi vs Target BI</h3>
+            <div id="inflation-display-buttons" class="filter-buttons">
+              <button class="filter-btn active" data-type="line">Garis</button>
+              <button class="filter-btn" data-type="bar">Kolom</button>
+            </div>
+          </div>
+          <canvas id="inflationChart"></canvas>
+        </div>
+
+        <div class="chart-section">
+          <div class="chart-header">
+            <h3>🏢 Pertumbuhan Sektor Ekonomi</h3>
+            <div id="sector-display-buttons" class="filter-buttons">
+              <button class="filter-btn active" data-type="pie">Pie</button>
+              <button class="filter-btn" data-type="doughnut">Doughnut</button>
+            </div>
+          </div>
+          <canvas id="sectorChart"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <section id="data" class="reveal">
+      <h2 class="section-title">📋 Data Lengkap Ekonomi Indonesia</h2>
+      
+      <div class="data-filters">
+        <button class="data-filter-btn active" onclick="filterTable('makro-table')">Makro Ekonomi</button>
+        <button class="data-filter-btn" onclick="filterTable('mikro-table')">Mikro Ekonomi</button>
+        <button class="data-filter-btn" onclick="filterTable('ekspor-table')">Ekspor-Impor</button>
+      </div>
+
+      <table id="makro-table" class="data-table">
+        <thead>
+          <tr>
+            <th>Indikator</th>
+            <th>Nilai</th>
+            <th>Periode</th>
+            <th>Perubahan</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>PDB (Triliun Rp)</td>
+            <td>21.850</td>
+            <td>2026</td>
+            <td class="positive">+5,05%</td>
+            <td>✓ Positif</td>
+          </tr>
+          <tr>
+            <td>Ekspor (Miliar USD)</td>
+            <td>258.4</td>
+            <td>2026</td>
+            <td class="positive">+4,2%</td>
+            <td>✓ Meningkat</td>
+          </tr>
+          <tr>
+            <td>Impor (Miliar USD)</td>
+            <td>192.7</td>
+            <td>2026</td>
+            <td class="positive">+2,8%</td>
+            <td>⚠ Meningkat</td>
+          </tr>
+          <tr>
+            <td>Neraca Pembayaran (Miliar USD)</td>
+            <td>1.2</td>
+            <td>2026</td>
+            <td class="positive">+0,7%</td>
+            <td>✓ Surplus Kecil</td>
+          </tr>
+          <tr>
+            <td>Cadangan Devisa (Miliar USD)</td>
+            <td>143.5</td>
+            <td>Mei 2026</td>
+            <td class="positive">+3,7%</td>
+            <td>✓ Meningkat</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table id="mikro-table" class="data-table" style="display: none;">
+        <thead>
+          <tr>
+            <th>Sektor</th>
+            <th>Pertumbuhan (%)</th>
+            <th>Kontribusi PDB (%)</th>
+            <th>Tenaga Kerja (Juta)</th>
+            <th>Proyeksi 2026</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Pertanian</td>
+            <td class="positive">+2.8%</td>
+            <td>13.7%</td>
+            <td>32.5</td>
+            <td>3.2%</td>
+          </tr>
+          <tr>
+            <td>Industri Pengolahan</td>
+            <td class="positive">+4.5%</td>
+            <td>19.6%</td>
+            <td>15.8</td>
+            <td>4.8%</td>
+          </tr>
+          <tr>
+            <td>Perdagangan & Ritel</td>
+            <td class="positive">+5.2%</td>
+            <td>12.4%</td>
+            <td>25.3</td>
+            <td>5.5%</td>
+          </tr>
+          <tr>
+            <td>Pariwisata & Perhotelan</td>
+            <td class="positive">+8.3%</td>
+            <td>3.8%</td>
+            <td>2.1</td>
+            <td>12.1%</td>
+          </tr>
+          <tr>
+            <td>Jasa Keuangan</td>
+            <td class="positive">+6.1%</td>
+            <td>8.2%</td>
+            <td>3.4</td>
+            <td>6.5%</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table id="ekspor-table" class="data-table" style="display: none;">
+        <thead>
+          <tr>
+            <th>Komoditas</th>
+            <th>Ekspor (Juta Ton)</th>
+            <th>Nilai (Miliar USD)</th>
+            <th>Destinasi Utama</th>
+            <th>Trend</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Minyak Kelapa Sawit</td>
+            <td>31.2</td>
+            <td>15.8</td>
+            <td>India, China, EU</td>
+            <td class="positive">↑ Naik</td>
+          </tr>
+          <tr>
+            <td>Batu Bara</td>
+            <td>487.0</td>
+            <td>28.5</td>
+            <td>China, India, Vietnam</td>
+            <td class="negative">↓ Turun</td>
+          </tr>
+          <tr>
+            <td>Karet Alam</td>
+            <td>2.8</td>
+            <td>4.2</td>
+            <td>China, India, USA</td>
+            <td class="stable">→ Stabil</td>
+          </tr>
+          <tr>
+            <td>Elektronik & Komponen</td>
+            <td>-</td>
+            <td>18.3</td>
+            <td>ASEAN, USA, EU</td>
+            <td class="positive">↑ Naik</td>
+          </tr>
+          <tr>
+            <td>Tekstil & Garmen</td>
+            <td>-</td>
+            <td>12.7</td>
+            <td>USA, EU, Japan</td>
+            <td class="stable">→ Stabil</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="stats" class="reveal">
+      <h2 class="section-title">📊 Ringkasan Indikator Utama</h2>
+      <div class="stats-panel">
+        <div class="stat-box">
+          <strong class="stat-number" data-target="288.31">0</strong>
+          <span>Juta Jiwa Penduduk Indonesia</span>
+        </div>
+        <div class="stat-box">
+          <strong class="stat-number" data-target="5.05">0</strong>
+          <span>% Pertumbuhan PDB</span>
+        </div>
+        <div class="stat-box">
+          <strong class="stat-number" data-target="65.5">0</strong>
+          <span>Juta UKM di Indonesia</span>
+        </div>
+        <div class="stat-box">
+          <strong class="stat-number" data-target="44.1">0</strong>
+          <span>Miliar USD (E-Commerce)</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="reveal">
+      <h2 class="section-title">❓ Pertanyaan Umum</h2>
+      <div class="faq-section">
+        <details open>
+          <summary>📊 Apa itu Ekonomi Makro Indonesia?</summary>
+          <p>Ekonomi makro adalah studi tentang perekonomian nasional secara menyeluruh, mencakup PDB, inflasi, pengangguran, perdagangan internasional, dan kebijakan moneter Bank Indonesia.</p>
+        </details>
+        <details>
+          <summary>🏪 Apa bedanya Ekonomi Makro dan Mikro?</summary>
+          <p>Ekonomi makro fokus pada keseluruhan ekonomi nasional, sementara ekonomi mikro mempelajari perilaku konsumen individual, bisnis kecil, dan pasar-pasar spesifik seperti sektor UKM, pertanian, dan industri.</p>
+        </details>
+        <details>
+          <summary>📈 Bagaimana cara membaca Grafik Candlestick?</summary>
+          <p>Grafik candlestick menunjukkan empat harga penting: Open (pembukaan), High (tertinggi), Low (terendah), dan Close (penutupan). Warna hijau berarti harga naik, merah berarti turun dalam periode tersebut.</p>
+        </details>
+        <details>
+          <summary>💰 Apa dampak inflasi terhadap kehidupan sehari-hari?</summary>
+          <p>Inflasi menyebabkan daya beli uang menurun. Ketika inflasi rendah dan stabil seperti sekarang, harga barang dan jasa terkendali sehingga daya beli masyarakat terjaga dengan baik.</p>
+        </details>
+        <details>
+          <summary>🏢 Mengapa UKM penting bagi ekonomi Indonesia?</summary>
+          <p>UKM menyumbang 61.9% dari PDB Indonesia dan menyerap sekitar 97% dari total tenaga kerja, menjadikannya motor penggerak ekonomi dan penyangga lapangan kerja nasional.</p>
+        </details>
+        <details>
+          <summary>📊 Bagaimana cara menggunakan data di halaman ini?</summary>
+          <p>Data yang disajikan dapat digunakan untuk analisis bisnis, penelitian akademik, pengambilan keputusan investasi, atau pemahaman tentang kondisi ekonomi Indonesia terkini.</p>
+        </details>
+      </div>
+    </section>
+
+    <section id="footer-section" class="reveal">
+      <h2 class="section-title">📞 Hubungi Kami</h2>
+      <div class="contact-card">
+        <div class="contact-info">
+          <h3>Informasi Analisis Ekonomi</h3>
+          <p>Saya mengembangkan dan membuat Portal ini untuk menyediakan data ekonomi Indonesia yang akurat dan terkini guna mendukung analisis bisnis dan penelitian ekonomi. Senang bisa berbagi informasi yang bermanfaat untuk semua orang. Terima kasih sudah mengunjungi website ini!</p>
+          <div class="contact-details">
+            <p>📧 Email: ekonomi@indonesia-analysis.id</p>
+            <p>📞 Telepon: +62 851-7744-1368</p>
+            <p>🌐 Website: www.indonesia-analysis.id</p>
+          </div>
+        </div>
+        <div class="data-sources">
+          <h3>Sumber Data</h3>
+          <p>Data diambil dari:</p>
+          <ul>
+            <li>✓ Bank Indonesia (BI)</li>
+            <li>✓ Badan Pusat Statistik (BPS)</li>
+            <li>✓ Kementerian Perdagangan</li>
+            <li>✓ Kementerian BUMN</li>
+            <li>✓ OJK (Otoritas Jasa Keuangan)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+ <section id="tentang" class="reveal">
+    <div class="hero" style="max-width: 950px; margin: 0 auto 2rem; padding: 1.75rem;">
+      <p><i>Halo, Perkenalkan saya Syaifi Alli. Saya adalah pengembang dan analis data ekonomi yang berfokus pada penyajian informasi aktual dan mudah dipahami. Website ini dibuat untuk membantu masyarakat dan pelaku ekonomi memahami tren makro dan mikro Indonesia melalui visualisasi interaktif dan data terbaru.</i></p>
+      <p><i>Saya terus memperbarui konten ini agar selalu relevan, termasuk indikator PDB, nilai tukar, inflasi, dan data perdagangan. Jika Anda ingin mendukung pengembangan ini, klik tombol donasi atau hubungi saya untuk kerjasama lebih lanjut.</i></p>
+    </div>
+  </section>
+
+  <button id="back-to-top" aria-label="Kembali ke atas">⬆️</button>
+
+  <footer>
+    <p>&copy; 2026 Analisis Ekonomi Indonesia. Semua hak dilindungi. | Data diperbarui: Mei 2026
+      | Penulis: Syaifi Alli | Desain & Pengembangan: Syaifi Alli | Sumber Data: Bank Indonesia, BPS, Kementerian Perdagangan, Kementerian BUMN, OJK
+    </p>
+  </footer>
+
+  <script src="htl.js" defer></script>
+</body>
+</html>
